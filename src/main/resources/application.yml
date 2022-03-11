@@ -1,0 +1,17 @@
+micronaut:
+  application:
+    name: micronautguide
+  #tag::oauth2[]
+  security:
+    authentication: idtoken # <1>
+    oauth2:
+      clients:
+        okta: # <2>
+          client-secret: '${OAUTH_CLIENT_SECRET:BkKYp6iYhkMzidTJ-kNI8uyvDryJzxGLpQ4DNkzP}' # <3>
+          client-id: '${OAUTH_CLIENT_ID:0oairrflp1XDfHlGA696}' # <4>
+          openid:
+            issuer: '${OIDC_ISSUER_DOMAIN:`checkoutmihkel-and-ristio-co.okta.com`}/oauth2/${OIDC_ISSUER_AUTHSERVERID:default}' # <5>
+    endpoints:
+      logout:
+        get-allowed: true # <6>
+#end::oauth2[]
